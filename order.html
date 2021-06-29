@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css'>
+    <link rel="stylesheet" href="./order.css">
+</head>
+<body bgcolor="#F5F5DC">
+	<div class="container-fluid mt-5">
+		<div class="main-content" >
+			<h2 class="mb-5 text-center" align="center">Shopping Cart</h2>
+		</div>
+		
+		
+		<div class="row justify-content-center" align="center">
+			<div class="col-md-8">
+				<div class="table-responsive">
+					<table id="myTable" class="table">
+						<thead>
+							<tr>
+								<th>Product</th>
+								<th>Name</th>
+								<th>Qty</th>
+								<th>Price</th>
+								<th class ="text-right">
+									<span id="amount" class="amount">Amount</span>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="product-img">
+										<div class="img-prdct">
+											<img src="wheat.jpg" width="100" height="100">
+										</div>
+									</div>
+								</td>
+								<td>
+									<p>Wheat Bags</p>
+								</td>
+								<td>
+									<div class="button-container">
+										<button class="cart-qty-plus" type="button" value="+">+</button>
+										<input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+										<button class="cart-qty-minus" type="button" value="-">-</button>
+									</div>
+								<td>
+									<input type="text" value="29.99" class="price form-control" disabled>
+								</td>
+								<td align="right">Rs <span id="amount" class="amount">0</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="product-img">
+										<div class="img-prdct">
+											<img src="maize.jpg" width="100" height="100">
+										</div>
+									</div>
+								</td>
+								<td>
+									<p>Maize</p>
+								</td>
+								<td>
+									<div class="button-container">
+										<button class="cart-qty-plus" type="button" value="+">+</button>
+										<input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+										<button class="cart-qty-minus" type="button" value="-">-</button>
+									</div>
+								<td>
+									<input type="text" value="65.7" class="price form-control" disabled>
+								</td>
+								<td align="right">Rs <span id="amount" class="amount">0</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="product-img">
+										<div class="img-prdct">
+											<img src="rice.jpg" width="100" height="100">
+										</div>
+									</div>
+								</td>
+								<td>
+									<p>Rice</p>
+								</td>
+								<td>
+									<div class="button-container">
+										<button class="cart-qty-plus" type="button" value="+">+</button>
+										<input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+										<button class="cart-qty-minus" type="button" value="-">-</button>
+									</div>
+								<td>
+									<input type="text" value="42" class="price form-control" disabled>
+								</td>
+								<td align="right">Rs <span id="amount" class="amount">0</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="product-img">
+										<div class="img-prdct">
+											<img src="onion.jpg" width="100" height="100">
+										</div>
+									</div>
+								</td>
+								<td>
+									<p>Onion</p>
+								</td>
+								<td>
+									<div class="button-container">
+										<button class="cart-qty-plus" type="button" value="+">+</button>
+										<input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+										<button class="cart-qty-minus" type="button" value="-">-</button>
+									</div>
+								<td>
+									<input type="text" value="15" class="price form-control" disabled>
+								</td>
+								<td align="right">Rs <span id="amount" class="amount">0</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="product-img">
+										<div class="img-prdct">
+											<img src="sugarcane.jpg" width="100" height="100">
+										</div>
+									</div>
+								</td>
+								<td>
+									<p>sugarcane</p>
+								</td>
+								<td>
+									<div class="button-container">
+										<button class="cart-qty-plus" type="button" value="+">+</button>
+										<input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+										<button class="cart-qty-minus" type="button" value="-">-</button>
+									</div>
+								<td>
+									<input type="text" value="30" class="price form-control" disabled>
+								</td>
+								<td align="right">Rs <span id="amount" class="amount">0</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="product-img">
+										<div class="img-prdct">
+											<img src="cottton.jpg" width="100" height="100">
+										</div>
+									</div>
+								</td>
+								<td>
+									<p>Cotton</p>
+								</td>
+								<td>
+									<div class="button-container">
+										<button class="cart-qty-plus" type="button" value="+">+</button>
+										<input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+										<button class="cart-qty-minus" type="button" value="-">-</button>
+									</div>
+								<td>
+									<input type="text" value="28.5" class="price form-control" disabled>
+								</td>
+								<td align="right">Rs <span id="amount" class="amount">0</span>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="4"></td>
+								<td align="left">
+								<div class="btn__group" align="center">
+									<div class="center">
+										<a href="payment.html" class="btn addToCart" type="reset">
+											<img src="placeorder.jpg" width="100" height="100">
+										</a>
+									</div>
+								</div>
+								<!--<td><a href="placeorder.html">
+									<img src="placeorder.jpg" width="100" height="100">
+									</a>
+								</td>
+								<button>Place an Order</button>-->
+								<td><strong>TOTAL =  <span id="total" class="total">0</span></strong></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--<button type="button" onclick="window.location.href='#';">Place an Order</button>-->
+	<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <script  src="./order.js"></script>
+</body>
+</html>

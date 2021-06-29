@@ -1,0 +1,76 @@
+<html>
+ <head>
+    <link rel="stylesheet" type="text/css" href="payment.css">
+   <title>add crops</title>
+ </head>
+ 
+<body bgcolor="#F5F5DC">
+	
+	<div class="main-content" align="center">
+			<h1>Agro-Zone</h1>
+      </div>
+	  <br>
+
+
+	<form action="addcrop.php" method="POST" align="center" >
+		
+		<h2>Add Your Crop</h2>
+			<table border="0" align="center">
+			
+				<tr>
+					<td class = "label">FullName:</td>
+					<td class = "input_col"><input type="text" name="name" id="name" required></td>
+					<!--<td class = "feedback_col"><span id="firstnameprompt">&nbsp;</span></td>-->
+				</tr>
+				
+				<tr>
+					<td class="label">Phone Number:</td>
+					<td class="input_col"><input name="phone" id="phone" type="text" onBlur="validatePhoneNum();" required></td>
+
+				</tr>
+				
+				<tr>
+					<td>
+					<label> Select Your type of crop </label>  
+					<select name="crop">  
+					<option value = "Rice">Rice</option>  
+					<option value = "Wheat"> Wheat</option>  
+					<option value = "Onion"> Onion </option>  
+					<option value = "Sugar Cane"> Sugar Cane </option>
+					<option value = "Maize">Maize</option>	
+					<option value = "Cotton">Cotton</option>				
+					</select>  
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="label">Give the quantity of your product(in kgs)</td>
+					<td class="input_col"><input name="quantity" type="text"  required></td>
+				</tr>
+				<tr>
+					<td class="label">Price ( per kg )</td>
+					<td class="input_col"><input name="quantity" type="text"  required></td>
+				
+				<tr>
+					<td>Fertilizers & Pesticides Used</td>
+					<td><textarea rows = "5" cols = "60" name = "fertilizers">Enter details here...</textarea></td><br>
+					
+				</tr>
+				
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value="Submit"></td>
+					<td colspan="2" align="left"><input type="reset" value="Reset"></td>
+				</tr>
+			</table>
+
+		</form>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<div class="main-content" align="center">
+			<h1></h1>
+        </div>
+	</body>
+</html>

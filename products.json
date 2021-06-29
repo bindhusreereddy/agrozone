@@ -1,0 +1,41 @@
+{
+    "status": "success",
+    "items": [{
+            "id": 1,
+            "title": "The Original Super Donut",
+            "price": 135,
+            "image": "rice.jpg"
+        },
+        {
+            "id": 2,
+            "title": "The Original Super Donut",
+            "price": 950,
+            "image": "maize.jpg"
+        },
+        {
+            "id": 3,
+            "title": "The Original Super Donut",
+            "price": 750,
+            "image": "rice.jpg"
+        },
+        {
+            "id": 4,
+            "title": "The Original Super Donut",
+            "price": 999,
+            "image": "rice.jpg"
+        },
+        {
+            "id": 5,
+            "title": "The Original Super Donut",
+            "price": 250,
+            "image": "rice.jpg"
+
+        },
+        {
+            "id": 6,
+            "title": "The Original Super Donut",
+            "price": 850,
+            "image": "./images/product-6.jpg"
+
+        }
+}
