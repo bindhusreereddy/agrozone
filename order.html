@@ -267,6 +267,13 @@
 <!-- Existing scripts (unchanged) -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./order.js"></script>
+<script>
+	function saveBillAmount() {
+      var total = document.getElementById("total").innerText;
+      localStorage.setItem("agrozone_bill_amount", total);
+    }
+</script>
+
 
 </body>
 </html>

@@ -178,7 +178,7 @@
 
         <div class="amount">
             <label>Amount</label>
-            <input type="text" class="total" id="total" placeholder="Bill Amount"/>
+            <input type="text" class="total" id="total" placeholder="bill amount" readonly />
         </div>
 
         <!-- Navigation unchanged -->
@@ -195,6 +195,15 @@
 
 <!-- Existing JS (unchanged) -->
 <script src="./order.js"></script>
+<script>
+    window.onload = function () {
+      var bill = localStorage.getItem("agrozone_bill_amount");
+      if (bill !== null) {
+        document.getElementById("total").value = bill;
+      }
+    };
+</script>
+
 
 </body>
 </html>
