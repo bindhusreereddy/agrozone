@@ -8,7 +8,7 @@ if(!empty($name)|| !empty($phn)|| !empty($mail)|| !empty($msg) ){
 	$host = "localhost";
 	$dbUsername = "root";
 	$dbPassword = "";
-	$dbname = "test";
+	$dbname = "agrozone";
 	
 	
 	//create a connection

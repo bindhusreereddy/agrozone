@@ -1,61 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cotton | Agro-Zone</title>
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+
+<div class="header">Agro-Zone</div>
+
+<div class="container">
+    <h2 style="text-align:center">Cotton Crop Details</h2>
+
 <?php
-	$host = "localhost";
-	$dbUsername = "root";
-	$dbPassword = "";
-	$dbname = "test";
-	
-	//$port = "3306";
-	//create a connection
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+$host = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbname = "agrozone";
 
+$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 
-	if(mysqli_connect_error()){
-		die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-	}
-	else{
-		$sql = "SELECT name, phone, crop, quantity, fertilizers FROM addcrop where crop='Cotton'";
-		$result = $conn->query($sql);
-	echo "<table border='1'>
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-	<tr>
+$sql = "SELECT name, phone, crop, quantity, fertilizers FROM addcrop WHERE crop='Cotton'";
+$result = $conn->query($sql);
 
-	<th>name</th>
+if ($result->num_rows > 0) {
 
-	<th>Mobile</th>
+    echo "<table class='styled-table'>";
+    echo "<tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Crop</th>
+            <th>Available Quantity</th>
+            <th>Fertilizers Used</th>
+          </tr>";
 
-	<th>crop</th>
-	
-	<th>Available Quantity</th>
-	
-	<th>Fertilizers used</th>
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>{$row['name']}</td>
+                <td>{$row['phone']}</td>
+                <td>{$row['crop']}</td>
+                <td>{$row['quantity']}</td>
+                <td>{$row['fertilizers']}</td>
+              </tr>";
+    }
 
-	</tr>";
-	if ($result->num_rows > 0) {
-    // output data of each row
-		while($row = $result->fetch_assoc()) {
-			
-			echo "<tr>";
+    echo "</table>";
 
-			echo "<td>" . $row["name"] . "</td>";
+} else {
+    echo "<p style='text-align:center;color:red'>No cotton crops found.</p>";
+}
 
-			echo "<td>" . $row["phone"] . "</td>";
-
-			echo "<td>" . $row["crop"] . "</td>";
-
-			echo "<td>" . $row["quantity"] . "</td>";
-			
-			echo "<td>" . $row["fertilizers"] . "</td>";
-
-			echo "</tr>";
-
-		}
-
-		echo "</table>";
-			
-	} else {
-		echo "0 results";
-	}
-	$conn->close();
-	}
+$conn->close();
 ?>
 
+</div>
+
+</body>
+</html>

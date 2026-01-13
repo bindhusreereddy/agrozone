@@ -12,7 +12,7 @@ if(!empty($name)||!empty($phone)|| !empty($crop)|| !empty($quantity)|| !empty($f
 	$host = "localhost";
 	$dbUsername = "root";
 	$dbPassword = "";
-	$dbname = "test";
+	$dbname = "agrozone";
 	
 	//$port = "3306";
 	//create a connection

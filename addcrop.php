@@ -6,14 +6,14 @@ $quantity = $_POST['quantity'];
 $fertilizers = $_POST['fertilizers'];
 
 //echo $firstname."<br>".$email."<br>".$gender."<br>".$qual."<br>".$lang;
-	
+
 if(!empty($name)||!empty($phone)|| !empty($crop)|| !empty($quantity)|| !empty($fertilizers) ){
 	//echo "inside if";
 	$host = "localhost";
 	$dbUsername = "root";
 	$dbPassword = "";
-	$dbname = "test";
-	
+	$dbname = "agrozone";
+
 	//$port = "3306";
 	//create a connection
 	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
@@ -32,10 +32,10 @@ if(!empty($name)||!empty($phone)|| !empty($crop)|| !empty($quantity)|| !empty($f
 		$stmt->bind_result($email);
 		$stmt->store_result();
 		$rnum = $stmt->num_rows;
-		
+
 		if($rnum==0){
 			//$stmt->close();*/
-			
+
 			$stmt = $conn->prepare($INSERT);
 			$stmt->bind_param("sssss", $name, $phone, $crop, $quantity, $fertilizers);
 			$stmt->execute();

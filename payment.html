@@ -1,67 +1,200 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="payment.css" 
-          class="css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="main-content" align="center">
-			<h1>Agro-Zone</h1>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <title>Payment | Agro-Zone</title>
 
-		<br>
-		<h2 align="center">Pay Now</h2>
-		<br>
-      <div class="card-details">
-        <p>Pay using Credit or Debit card</p>
-  
+    <!-- Existing CSS (unchanged) -->
+    <link rel="stylesheet" href="payment.css" class="css"/>
+
+    <!-- UI alignment fixes -->
+    <style>
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1f8f3a;
+            color: white;
+            padding: 22px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Outer card */
+        .container {
+            max-width: 420px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        /* Inner green form – FULL WIDTH */
+        .card-details {
+            background-color: #0b2f0b;
+            padding: 22px;
+            border-radius: 10px;
+
+            /* 🔧 FIX */
+            width: calc(100% - 0px);
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+
+        .card-details p {
+            text-align: center;
+            color: #cfe7cf;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        /* Labels */
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #e6f3e6;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Inputs – full width & aligned */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 4px rgba(255,255,255,0.4);
+        }
+
+        /* Amount field */
+        .amount input {
+            background-color: #f1f1f1;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Submit button – full width */
+        .submit-now-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #2f9e44;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .submit-now-btn:hover {
+            background-color: #22863a;
+        }
+
+        /* Footer text */
+        .footer-text {
+            text-align: center;
+            margin-top: 18px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ===== FINAL ALIGNMENT FIX ===== */
+
+        /* Ensure green form uses full width correctly */
+        .card-details {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Fix submit button overflow */
+        .card-details a {
+            display: block;
+        }
+
+        .submit-now-btn {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<div class="header">Agro-Zone</div>
+
+<!-- Payment Card -->
+<div class="container">
+
+    <h2>Pay Now</h2>
+
+    <div class="card-details">
+        <p>Pay using Credit or Debit Card</p>
+
         <div class="card-number">
-          <label> Card Number </label>
-          <input
-            type="text"
-            class="card-number-field"
-            placeholder="###-###-###-###"/>
+            <label>Card Number</label>
+            <input type="text" class="card-number-field" placeholder="###-###-###-###"/>
         </div>
-        <br />
+
         <div class="date-number">
-          <label> Expiry Date </label>
-          <input type="text" class="date-number-field" 
-                 placeholder="DD-MM-YY" />
+            <label>Expiry Date</label>
+            <input type="text" class="date-number-field" placeholder="DD-MM-YY"/>
         </div>
-  
+
         <div class="cvv-number">
-          <label> CVV number </label>
-          <input type="text" class="cvv-number-field" 
-                 placeholder="xxx" />
+            <label>CVV Number</label>
+            <input type="text" class="cvv-number-field" placeholder="XXX"/>
         </div>
+
         <div class="nameholder-number">
-          <label> Card Holder name </label>
-          <input
-            type="text"
-            class="card-name-field"
-            placeholder="Enter your Name"/>
+            <label>Card Holder Name</label>
+            <input type="text" class="card-name-field" placeholder="Enter your Name"/>
         </div>
-		<div class="amount">
-          <label> Amount </label>
-          <input type="text" class="total" id="total"
-                 placeholder="bill amount" />
+
+        <div class="amount">
+            <label>Amount</label>
+            <input type="text" class="total" id="total" placeholder="Bill Amount"/>
         </div>
+
+        <!-- Navigation unchanged -->
         <a href="placeorder.html">
-			<button type="submit" class="submit-now-btn" >submit</button>
-		</a>
-      </div>
-	  
-	  
-	  
-	  
-	  
-	  <br>
-	  <br>
-	  <br>
-	  <div class="main-content">
-			<p class="text" text >Agro-Zone</p>
-      </div>
+            <button type="submit" class="submit-now-btn">Submit Payment</button>
+        </a>
     </div>
-	<script  src="./order.js"></script>
-  </body>
+
+    <div class="footer-text">
+        Secure Payment • Agro-Zone
+    </div>
+
+</div>
+
+<!-- Existing JS (unchanged) -->
+<script src="./order.js"></script>
+
+</body>
 </html>
