@@ -139,6 +139,12 @@
             box-sizing: border-box;
             margin: 0;
         }
+        .submit-now-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
 
     </style>
 </head>
@@ -158,22 +164,22 @@
 
         <div class="card-number">
             <label>Card Number</label>
-            <input type="text" class="card-number-field" placeholder="###-###-###-###"/>
+            <input type="text" class="card-number-field" placeholder="###-###-###-###" required/>
         </div>
 
         <div class="date-number">
             <label>Expiry Date</label>
-            <input type="text" class="date-number-field" placeholder="DD-MM-YY"/>
+            <input type="text" class="date-number-field" placeholder="DD-MM-YY" required/>
         </div>
 
         <div class="cvv-number">
             <label>CVV Number</label>
-            <input type="text" class="cvv-number-field" placeholder="XXX"/>
+            <input type="text" class="cvv-number-field" placeholder="XXX" required/>
         </div>
 
         <div class="nameholder-number">
             <label>Card Holder Name</label>
-            <input type="text" class="card-name-field" placeholder="Enter your Name"/>
+            <input type="text" class="card-name-field" placeholder="Enter your Name" required/>
         </div>
 
         <div class="amount">
@@ -183,7 +189,10 @@
 
         <!-- Navigation unchanged -->
         <a href="placeorder.html">
-            <button type="submit" class="submit-now-btn">Submit Payment</button>
+            <button type="submit" class="submit-now-btn" id="submitBtn" disabled>
+                Submit Payment
+            </button>
+
         </a>
     </div>
 
@@ -202,6 +211,31 @@
         document.getElementById("total").value = bill;
       }
     };
+</script>
+<script>
+    const cardNumber = document.querySelector(".card-number-field");
+    const expiryDate = document.querySelector(".date-number-field");
+    const cvv = document.querySelector(".cvv-number-field");
+    const cardName = document.querySelector(".card-name-field");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function checkAllFields() {
+        if (
+            cardNumber.value.trim() !== "" &&
+            expiryDate.value.trim() !== "" &&
+            cvv.value.trim() !== "" &&
+            cardName.value.trim() !== ""
+        ) {
+            submitBtn.disabled = false;
+        } else {
+            submitBtn.disabled = true;
+        }
+    }
+
+    cardNumber.addEventListener("input", checkAllFields);
+    expiryDate.addEventListener("input", checkAllFields);
+    cvv.addEventListener("input", checkAllFields);
+    cardName.addEventListener("input", checkAllFields);
 </script>
 
 

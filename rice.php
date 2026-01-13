@@ -1,63 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rice | Agro-Zone</title>
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+
+<div class="header">Agro-Zone</div>
+
+<div class="container">
+    <h2 style="text-align:center">Rice Crop Details</h2>
+
 <?php
 $host = "localhost";
-	$dbUsername = "root";
-	$dbPassword = "";
-	$dbname = "agrozone";
-	
-	//$port = "3306";
-	//create a connection
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+$dbUsername = "root";
+$dbPassword = "";
+$dbname = "agrozone";
 
+// create a connection
+$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 
-	if(mysqli_connect_error()){
-		die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-	}
-	else{
-		$sql = "SELECT name, phone, crop, quantity, fertilizers FROM addcrop where crop='Rice'";
-		$result = $conn->query($sql);
+if (mysqli_connect_error()) {
+    die('Connect Error (' . mysqli_connect_errno() . ') ' . mysqli_connect_error());
+} else {
 
-	echo "<table border='1'>
+    $sql = "SELECT name, phone, crop, quantity, fertilizers FROM addcrop WHERE crop='Rice'";
+    $result = $conn->query($sql);
 
-	<tr>
+    if ($result->num_rows > 0) {
 
-	<th>name</th>
+        echo "<table class='styled-table'>";
+        echo "<tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Crop</th>
+                <th>Available Quantity</th>
+                <th>Fertilizers Used</th>
+              </tr>";
 
-	<th>Mobile</th>
+        while ($row = $result->fetch_assoc()) {
 
-	<th>crop</th>
-	
-	<th>Available Quantity</th>
-	
-	<th>Fertilizers used</th>
+            echo "<tr>";
+            echo "<td>" . $row['name'] . "</td>";
+            echo "<td>" . $row['phone'] . "</td>";
+            echo "<td>" . $row['crop'] . "</td>";
+            echo "<td>" . $row['quantity'] . "</td>";
+            echo "<td>" . $row['fertilizers'] . "</td>";
+            echo "</tr>";
+        }
 
-	</tr>";
-	
-	if ($result->num_rows > 0) {
-    // output data of each row
-		while($row = $result->fetch_assoc()) {
-			
-			echo "<tr>";
+        echo "</table>";
 
-			echo "<td>" . $row["name"] . "</td>";
+    } else {
+        echo "<p style='text-align:center;color:red'>No rice crop records found.</p>";
+    }
 
-			echo "<td>" . $row["phone"] . "</td>";
-
-			echo "<td>" . $row["crop"] . "</td>";
-
-			echo "<td>" . $row["quantity"] . "</td>";
-			
-			echo "<td>" . $row["fertilizers"] . "</td>";
-
-			echo "</tr>";
-
-		}
-
-		echo "</table>";
-			
-	} else {
-		echo "0 results";
-	}
-	$conn->close();
-	}
+    $conn->close();
+}
 ?>
 
+</div>
+
+</body>
+</html>

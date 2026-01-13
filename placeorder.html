@@ -1,34 +1,106 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>order</title>
-	<link rel="stylesheet" href="payment.css" 
-          class="css" />
+	<title>Order Placed | Agro-Zone</title>
+
+	<!-- Existing CSS link (unchanged) -->
+	<link rel="stylesheet" href="payment.css" class="css"/>
+
+	<!-- UI-only styling -->
+	<style>
+		body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .main-content h1 {
+            background-color: #1f8f3a;
+            color: white;
+            padding: 22px;
+            margin: 0;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        /* Center success box */
+        .order-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .order-box {
+            background: white;
+            border-radius: 14px;
+            padding: 35px 40px;
+            width: 420px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            border-top: 6px solid #1f8f3a;
+        }
+
+        .order-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 18px;
+        }
+
+        .order-box strong {
+            color: #1f8f3a;
+        }
+
+        .emergency {
+            margin-top: 12px;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .emergency span {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        /* Footer spacing (keeps your structure) */
+        .footer-space {
+            height: 40px;
+        }
+	</style>
 </head>
-<body align="center" bgcolor="#B0E0E6" >
-	
-	<div class="main-content" align="center">
-			<h1>Agro-Zone</h1>
-    </div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	
-	<div align="center" style="border: 1px solid black" >
-		<p>Your Order Has Been Placed!!<br>Your order will be delivered within 4-5 working days!!!</p><br>
-		Call Emergency No: 6776276653
+
+<body>
+
+<!-- Header (unchanged content) -->
+<div class="main-content" align="center">
+	<h1>Agro-Zone</h1>
+</div>
+
+<!-- Order confirmation -->
+<div class="order-container">
+	<div class="order-box">
+		<p>
+			Your Order Has Been Placed!!<br>
+			Your order will be delivered within <strong>4-5 working days</strong>!!!
+		</p>
+
+		<div class="emergency">
+			Call Emergency No: <span>6776276653</span>
+		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="main-content" align="center">
-			<h1></h1>
-    </div>
+</div>
+
+<!-- Footer spacing (kept) -->
+<div class="footer-space"></div>
+
+<div class="main-content" align="center">
+	<h1></h1>
+</div>
+
 </body>
 </html>
