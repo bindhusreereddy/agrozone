@@ -1,60 +1,90 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Registration</title>
-	<link rel="stylesheet" href="payment.css" />
-	</head>
-<body bgcolor="#F5F5DC">
-	<?php
-	require('db.php');
-	// If form submitted, insert values into the database.
-	if (isset($_REQUEST['username'])){
-        // removes backslashes
-		$username = stripslashes($_REQUEST['username']);
-        //escapes special characters in a string
-		$username = mysqli_real_escape_string($con,$username); 
-		$email = stripslashes($_REQUEST['email']);
-		$email = mysqli_real_escape_string($con,$email);
-		$password = stripslashes($_REQUEST['password']);
-		$password = mysqli_real_escape_string($con,$password);
-		$trn_date = date("Y-m-d H:i:s");
-			$query = "INSERT into `users` (username, password, email, trn_date)
-		VALUES ('$username', '".md5($password)."', '$email', '$trn_date')";
-			$result = mysqli_query($con,$query);
-			if($result){
-				echo "<div class='form'>
-				<h3>You are registered successfully.</h3>
-				<br/>Click here to <a href='loginform.php'>Login</a></div>";
-			}
+    <meta charset="utf-8">
+    <title>Registration | Agro-Zone</title>
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+
+<div class="header">Agro-Zone</div>
+
+<?php
+require('db.php');
+
+if (isset($_REQUEST['username'])) {
+
+    $username = stripslashes($_REQUEST['username']);
+    $username = mysqli_real_escape_string($con, $username);
+
+    $email = stripslashes($_REQUEST['email']);
+    $email = mysqli_real_escape_string($con, $email);
+
+    $phone = stripslashes($_REQUEST['phone']);
+    $phone = mysqli_real_escape_string($con, $phone);
+
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($con, $password);
+
+    $trn_date = date("Y-m-d H:i:s");
+
+    $query = "INSERT INTO users (username, email, phone, password, trn_date)
+              VALUES ('$username', '$email', '$phone', '".md5($password)."', '$trn_date')";
+
+    $result = mysqli_query($con, $query);
+
+    if ($result) {
+        echo "<div class='container'>
+                <h3 style='text-align:center;color:green'>
+                    You are registered successfully.
+                </h3>
+                <p style='text-align:center'>
+                    <a href='loginform.php'>Click here to Login</a>
+                </p>
+              </div>";
     }
-	else{
+
+} else {
 ?>
-<div class="form">
-	<div class="main-content">
-		<h1 align="center">Agro-Zone</h1>
-	</div>
-	<br>
-	<h2 align="center">Registration</h2>
-	<br>
-	<br>
-		<form name="registration" action="" method="post" align="center">
-			<input type="text" name="username" placeholder="Username" required /><br>
-			<br><input type="email" name="email" placeholder="Email" required /><br>
-			<br><input type="password" name="password" placeholder="Password" required /><br>
-			<br><input type="submit" name="submit" value="Register" />
-		</form>
+
+<div class="container">
+    <h2 style="text-align:center">Registration</h2>
+
+    <form method="post" align="center">
+        <input type="text" name="username" placeholder="Username" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="text" name="phone" placeholder="Phone Number" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="submit" value="Register">
+    </form>
+
+    <div style="text-align:center;margin-top:15px">
+        <a href="loginform.php">Already have an account? Login</a>
+    </div>
+
+    <div style="text-align:center;margin-top:20px">
+        <a href="frontpage.html">
+            <button type="button" class="back-btn">← Back to Home</button>
+        </a>
+    </div>
 </div>
 
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <div class="main-content">
-			<p class="text" text ></p>
-      </div>
-
 <?php } ?>
+
+<style>
+.back-btn {
+    background-color: #777;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.back-btn:hover {
+    background-color: #555;
+}
+</style>
+
 </body>
 </html>

@@ -1,35 +1,36 @@
 <?php
+$host = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbname = "agrozone";
+
+$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+
+if ($conn->connect_error) {
+    die("Database connection failed");
+}
+
 $name = $_POST['name'];
-$phn = $_POST['phn'];
-$mail = $_POST['mail'];
-$msg = $_POST['msg'];
+$phone = $_POST['phn'];
+$email = $_POST['mail'];
+$message = $_POST['msg'];
 
-if(!empty($name)|| !empty($phn)|| !empty($mail)|| !empty($msg) ){
-	$host = "localhost";
-	$dbUsername = "root";
-	$dbPassword = "";
-	$dbname = "agrozone";
-	
-	
-	//create a connection
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
+if (!empty($name) && !empty($phone) && !empty($email) && !empty($message)) {
 
+    $stmt = $conn->prepare(
+        "INSERT INTO contact_us (name, phone, email, message) VALUES (?, ?, ?, ?)"
+    );
+    $stmt->bind_param("ssss", $name, $phone, $email, $message);
+    $stmt->execute();
+    $stmt->close();
 
-	if(mysqli_connect_error()){
-		die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-	}
-	else{
-		$INSERT = "INSERT Into contact (name, phn, mail, msg) values(?, ?, ?, ?)";
-		$stmt = $conn->prepare($INSERT);
-		$stmt->bind_param("siss", $name, $phn, $mail, $msg);
-		$stmt->execute();
-		echo "Thank you,We'll Reach out as soon as possible";
-		$stmt->close();
-		$conn->close();
-	}
+    echo "<script>
+            alert('Thank you! Your message has been sent.');
+            window.location.href='frontpage.html';
+          </script>";
+} else {
+    echo "All fields are required";
 }
-else{
-	echo "All field are Required";
-	die();
-}
+
+$conn->close();
 ?>

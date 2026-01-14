@@ -1,62 +1,150 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>contact</title>
-	<link rel="stylesheet" href="contact.css">
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+	<title>Contact Us | Agro-Zone</title>
+
+	<style>
+		body {
+			margin: 0;
+			font-family: "Segoe UI", Arial, sans-serif;
+			background-color: #f4f6f8;
+		}
+
+		.header {
+			background-color: #1f8f3a;
+			color: white;
+			padding: 18px;
+			text-align: center;
+			font-size: 26px;
+			font-weight: bold;
+		}
+
+		.container {
+			max-width: 1000px;
+			margin: 40px auto;
+			background: white;
+			border-radius: 14px;
+			box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+			display: flex;
+			overflow: hidden;
+		}
+
+		.left, .right {
+			padding: 30px;
+			width: 50%;
+		}
+
+		.left h2, .right h2 {
+			color: #1f8f3a;
+			margin-bottom: 15px;
+		}
+
+		label {
+			font-size: 14px;
+			font-weight: 500;
+		}
+
+		input, textarea {
+			width: 100%;
+			padding: 10px;
+			margin-top: 6px;
+			margin-bottom: 14px;
+			border-radius: 6px;
+			border: 1px solid #ccc;
+			font-size: 14px;
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		.row {
+			display: flex;
+			gap: 15px;
+		}
+
+		.row > div {
+			flex: 1;
+		}
+
+		button {
+			background-color: #1f8f3a;
+			color: white;
+			border: none;
+			padding: 12px 28px;
+			border-radius: 8px;
+			font-size: 15px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #176e2d;
+		}
+
+		.right {
+			background-color: #1f8f3a;
+			color: white;
+		}
+
+		.right p {
+			margin: 12px 0;
+			font-size: 15px;
+		}
+
+		.footer {
+			text-align: center;
+			margin-top: 20px;
+			font-size: 14px;
+			color: #777;
+		}
+	</style>
 </head>
+
 <body>
-	<div class="contact">
-		<h1>Connect With Us</h1>
-		<p>We would love to respond to your queries and help you succeed.<br>Feel free 
-		to get in touch withus.</p>
-		<div class="contact-box">
-			<div class="contact-left">
-				<h3>Sent your request</h3>
-				<form action="contact.php" method="POST">
-					<div class="input-row">
-						<div class="input-group">
-							<label>Name</label>
-							<input type="text" placeholder="Bindhu" name="name">
-						</div>
-						<div class="input-group">
-							<label>Phone</label>
-							<input type="text" placeholder="+91 2785639086" name="phn">
-						</div>
-					</div>
-					<div class="input-row">
-						<div class="input-group">
-							<label>Email</label>
-							<input type="email" placeholder="bindhu@gmail.com" name="mail">
-						</div>
-					</div>
-					<label>Message</label>
-					<textarea rows="5" placeholder="your message" name="msg"></textarea>
-					<button type="submit" value="Submit">SEND</button>
-				</form>
+
+<div class="header">Agro-Zone</div>
+
+<div class="container">
+
+	<div class="left">
+		<h2>Connect With Us</h2>
+		<p>We would love to respond to your queries and help you succeed.</p>
+
+		<form action="contact.php" method="POST">
+			<div class="row">
+				<div>
+					<label>Name</label>
+					<input type="text" name="name" required>
+				</div>
+				<div>
+					<label>Phone</label>
+					<input type="text" name="phn" required>
+				</div>
 			</div>
-			<div class="contact-right">
-				<h3> Reach Us</h3>
-				<table>
-					<tr>
-						<td>Email:</td>
-						<td>contactus@gmail.com</td>
-					</tr>
-					<tr>
-						<td>Phone:</td>
-						<td>+91 5478654567</td>
-					</tr>
-					<tr>
-						<td>Adress:</td>
-						<td>Hyderabad,500016</td>
-					</tr>
-				</table>
-			
-				
-				
-			</div>
-		</div>
+
+			<label>Email</label>
+			<input type="email" name="mail" required>
+
+			<label>Message</label>
+			<textarea rows="5" name="msg" required></textarea>
+
+			<button type="submit">Send Message</button>
+		</form>
 	</div>
+
+	<div class="right">
+		<h2>Reach Us</h2>
+		<p><strong>Email:</strong> contactus@gmail.com</p>
+		<p><strong>Phone:</strong> +91 5478654567</p>
+		<p><strong>Address:</strong> Hyderabad, 500016</p>
+	</div>
+
+</div>
+
+<div class="footer">
+	© Agro-Zone | Contact Support
+</div>
+
 </body>
 </html>

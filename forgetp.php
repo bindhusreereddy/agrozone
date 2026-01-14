@@ -1,62 +1,45 @@
-<?php 
+<?php
 
-session_start();
+$username = $_POST['username'] ?? '';
+$New_Password = $_POST['New_Password'] ?? '';
 
-		//something was posted
-		$username = $_POST['username'];
-		$Recovery_Password = $_POST['Recovery_Password'];
+if (!empty($username) && !empty($New_Password)) {
 
+    $host = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+    $dbname = "agrozone";
 
-		if(!empty($username) && !empty($Recovery_Password) )
-		{
-//echo "inside if";
-	$host = "localhost";
-	$dbUsername = "root";
-	$dbPassword = "";
-	$dbname = "agrozone";
-	
-	//$port = "3306";
-	echo "create a connection";
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
-	
-			//read from database
-			$query = "select * from users where  username = $username";
-			$result = mysqli_query($conn, $query);
-			//echo "\n\n$result - [log statement here]";
-			
-			
-	
-			if($result)
-			{
-				if($result && mysqli_num_rows($result) > 0)
-				{
-					
-					$user_data = mysqli_fetch_assoc($result);
-					
-					if($user_data['Recovery_Password'] === $Recovery_Password)
-					{
+    $conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 
-						$_SESSION['username'] = $userdata['username'];
-						//echo "\n\n$Recovery_Password ";
-						//header("Location:user_choice.html");
-						die;
-					}
-					else
-					{
-						echo "wrong recovery password";
-					}
-				}
-				
-			}
-			else{
-			 echo "NOT REGISTERED! \n\n CLICK HERE TO REGISTER";
-			//header("Location:sigin_page.html");
-			}
-			
-			
-		}else
-		{
-			echo "connection error";
-			
-			
-		}
+    if ($conn->connect_error) {
+        die("DB Connection Failed: " . $conn->connect_error);
+    }
+
+    // Check if user exists
+    $query = "SELECT * FROM users WHERE username='$username'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+
+        // Update password
+        $hashed = md5($New_Password);
+        $update = "UPDATE users SET password='$hashed' WHERE username='$username'";
+
+        if (mysqli_query($conn, $update)) {
+            echo "✅ Password updated successfully.<br>";
+            echo "<a href='loginform.php'>Login here</a>";
+        } else {
+            echo "❌ Error updating password";
+        }
+
+    } else {
+        echo "❌ User not registered";
+    }
+
+    $conn->close();
+
+} else {
+    echo "❌ Username or Password is empty";
+}
+?>

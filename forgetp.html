@@ -1,35 +1,104 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>r</title>
-	<link rel="stylesheet" type="text/css" href="payment.css">
+	<meta charset="utf-8">
+	<title>Recover Password | Agro-Zone</title>
+
+	<style>
+		body {
+			margin: 0;
+			font-family: "Segoe UI", Arial, sans-serif;
+			background-color: #f4f6f8;
+		}
+
+		/* Header */
+		.header {
+			background-color: #1f8f3a;
+			color: white;
+			padding: 18px;
+			text-align: center;
+			font-size: 26px;
+			font-weight: bold;
+		}
+
+		/* Container */
+		.container {
+			max-width: 420px;
+			margin: 60px auto;
+			background: white;
+			padding: 35px;
+			border-radius: 14px;
+			box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+			text-align: center;
+		}
+
+		h2 {
+			color: #1f8f3a;
+			margin-bottom: 25px;
+		}
+
+		input {
+			width: 100%;
+			padding: 12px;
+			margin-bottom: 18px;
+			border-radius: 6px;
+			border: 1px solid #ccc;
+			font-size: 14px;
+		}
+
+		button {
+			width: 100%;
+			background-color: #1f8f3a;
+			color: white;
+			border: none;
+			padding: 12px;
+			border-radius: 8px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #176e2d;
+		}
+
+		.back-link {
+			margin-top: 18px;
+			font-size: 14px;
+		}
+
+		.back-link a {
+			color: #1f8f3a;
+			text-decoration: none;
+			font-weight: 500;
+		}
+
+		.back-link a:hover {
+			text-decoration: underline;
+		}
+	</style>
 </head>
-<body align="center" bgcolor="#B0E0E6" >
-	<div class="main-content">
-			<h1>Agro-Zone</h1>
-      </div>
-	  
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	  <br>
-	<div align="center" style="border: 1px solid black" bgcolor="#F5F5DC">
-		<p>Your Password has been changed successfully!!<br>You can use your new password to login into your account!!!</p>
+
+<body>
+
+<div class="header">Agro-Zone</div>
+
+<div class="container">
+	<h2>Recover Your Password</h2>
+
+	<form align="center">
+		<input type="text" name="username" placeholder="Username" required>
+		<input type="password" name="New_Password" placeholder="New Password" required>
+
+		<!-- Keeping your existing navigation behavior -->
+		<a href="forgetp.php">
+			<button type="submit">Submit</button>
+		</a>
+	</form>
+
+	<div class="back-link">
+		<a href="loginform.php">← Back to Login</a>
 	</div>
-	
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="main-content">
-			<h1></h1>
-    </div>
-	<!--<img src="orderplaced.jpg" width="100%"height="100%">-->
+</div>
+
 </body>
 </html>

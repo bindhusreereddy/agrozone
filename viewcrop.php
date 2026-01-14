@@ -1,70 +1,135 @@
 <?php
+include("auth.php"); // ensures user is logged in
+session_start();
 
-	include("auth.php");
-	
+$loggedUser = $_SESSION['username'];
 
-	$host = "localhost";
-	$dbUsername = "root";
-	$dbPassword = "";
-	$dbname = "agrozone";
-	
-	//$port = "3306";
-	//create a connection
-	$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
-	echo "Details of the crops added";
-	echo "";
+$conn = new mysqli("localhost", "root", "", "agrozone");
 
-	if(mysqli_connect_error()){
-		die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-	}
-	else{
-		$sql = "SELECT name, phone, crop, quantity, fertilizers FROM addcrop where name='bindhu'";
-		$result = $conn->query($sql);
-		
-	echo "<table border='1'>
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-	<tr>
+$sql = "SELECT name, phone, crop, quantity, fertilizers
+        FROM addcrop
+        WHERE name = '$loggedUser'";
 
-	<th>name</th>
+$result = $conn->query($sql);
+?>
 
-	<th>Mobile</th>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Crops | Agro-Zone</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f4f6f8;
+        }
+        .header {
+            background-color: #1f8f3a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #1f8f3a;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #1f8f3a;
+            color: white;
+            padding: 12px;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f1f7f3;
+        }
+        .actions {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            margin: 5px;
+            background-color: #1f8f3a;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #176e2d;
+        }
+        .no-data {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+        }
+    </style>
+</head>
 
-	<th>crop</th>
-	
-	<th>Available Quantity</th>
-	
-	<th>Fertilizers used</th>
+<body>
 
-	</tr>";
-	if ($result->num_rows > 0) {
-    // output data of each row
-		while($row = $result->fetch_assoc()) {
-			
-			echo "<tr>";
+<div class="header">Agro-Zone</div>
 
-			echo "<td>" . $row["name"] . "</td>";
+<div class="container">
+    <h2>My Added Crops</h2>
 
-			echo "<td>" . $row["phone"] . "</td>";
+    <?php if ($result->num_rows > 0) { ?>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Crop</th>
+                <th>Available Quantity</th>
+                <th>Fertilizers Used</th>
+            </tr>
 
-			echo "<td>" . $row["crop"] . "</td>";
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $row['name']; ?></td>
+                    <td><?php echo $row['phone']; ?></td>
+                    <td><?php echo $row['crop']; ?></td>
+                    <td><?php echo $row['quantity']; ?></td>
+                    <td><?php echo $row['fertilizers']; ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+    <?php } else { ?>
+        <p class="no-data">No crops added yet.</p>
+    <?php } ?>
 
-			echo "<td>" . $row["quantity"] . "</td>";
-			
-			echo "<td>" . $row["fertilizers"] . "</td>";
+    <div class="actions">
+        <a href="addcrop.php" class="btn">➕ Add Crop</a>
+        <a href="customer.html" class="btn">🏠 Home</a>
+    </div>
+</div>
 
-			echo "</tr>";
+</body>
+</html>
 
-		}
-
-		echo "</table>";
-			
-		/*	echo "name: " . $row["name"]."<br> * phone: " . $row["phone"]."<br> * crop: " . $row["crop"]."<br> * Available Quantity: ". $row["quantity"] . "<br> * Fertilizers used: ". $row["fertilizers"] . "<br>";
-		}*/
-	} else {
-		echo "0 results";
-	}
-	$conn->close();
-	}
-	
-	
+<?php
+$conn->close();
 ?>
