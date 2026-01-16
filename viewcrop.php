@@ -123,7 +123,7 @@ $result = $conn->query($sql);
 
     <div class="actions">
         <a href="addcrop.php" class="btn">➕ Add Crop</a>
-        <a href="customer.html" class="btn">🏠 Home</a>
+        <a href="index.php" class="btn">🏠 Home</a>
     </div>
 </div>
 

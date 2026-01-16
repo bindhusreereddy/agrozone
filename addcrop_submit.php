@@ -88,7 +88,7 @@ if (!empty($name) && !empty($phone) && !empty($crop) && !empty($quantity) && !em
             <p>Your crop details have been saved.</p>
 
             <a href="addcrop.php" class="btn btn-add">➕ Add Another Crop</a>
-            <a href="customer.html" class="btn btn-view">👁 View Crops</a>
+            <a href="viewcrop.php" class="btn btn-view">👁 View Crops</a>
         </div>
 
         </body>
